@@ -1,0 +1,46 @@
+<div class="container" style="background-color:rgb(231, 191, 231)">
+  <div class="col-sm-4">
+  <h4>Notes Add</h4>
+  <div class="mb-4">
+    <input [(ngModel)]="notetitle" class="form-input" placeholder="Note Title" style="background-color:rgb(233, 231, 120); text-align: center;"/>
+    <div *ngIf="noteError!=''" class="alert alert-secondary" role="alert">
+     {{noteError}}
+    </div>
+  </div>
+  <div class="mb-4">
+    <input [(ngModel)]="notedetail" class="form-input" placeholder="Note Details" style="background-color:rgb(233, 231, 120);; text-align: center;"/>
+  </div>
+  <button *ngIf="index==-1" (click)="fncInsert()"  style="background-color: rgb(242, 243, 167); border-radius: 50%;">ADD</button>
+  <button *ngIf="index!=-1" (click)="fncUpdate()" style="background-color: rgb(242, 243, 167); border-radius: 50%;">Update</button>
+<br>
+<br>
+</div>
+
+<table class="table table-info">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Note Title</th>
+      <th scope="col">Note Detail</th>
+      <th scope="col">Action</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of notes; let i=index;">
+      <th scope="row">{{i+1}}</th>
+      <td>{{item['notetitle']}}</td>
+      <td>{{item['notedetail']}}</td>
+      <td>
+        <button (click)="fncDataRemove(i)" class="btn btn-info btn-sm">Delete</button>
+      </td>
+      <td>
+        <button (click)="fncDataUpdate(i)" class="btn btn-warning btn-sm">Update</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+
